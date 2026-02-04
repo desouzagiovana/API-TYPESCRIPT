@@ -5,15 +5,13 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    plugins: { js }, extends: ["js/recommended"],
+    files: ["**/*.ts"],
     languageOptions: {
-      globals: globals.browser,
-      parser:"@typescript-eslint/parser",
+      parser: tseslint.parser,
       parserOptions: {
-        project: "./tsconfig.json"
-      }
-    }
+        project: "./tsconfig.json",
+      },
+    },
+    extends: [tseslint.configs.recommended],
   },
-  tseslint.configs.recommended,
 ]);
