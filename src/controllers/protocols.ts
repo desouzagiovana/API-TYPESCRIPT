@@ -21,3 +21,7 @@ export interface HttpRequest<B> {
   headers?: B;
   body: B;
 }
+
+export interface IController {
+  handle(httpRequest: HttpRequest<unknown>): Promise<HttpResponse<unknown>>; //quem implementar que define o que e o unknown
+}
