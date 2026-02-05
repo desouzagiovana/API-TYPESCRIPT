@@ -1,9 +1,8 @@
 import validator from "validator"; // verifica validade  do email
 import { User } from "../../models/user.js";
-import { HttpRequest, HttpResponse } from "../protocols.js";
+import { HttpRequest, HttpResponse, IController } from "../protocols.js";
 import { CreateUserParams, ICreateUserRepository } from "./protocol.js";
-import { ICreateUserController } from "./protocol.js";
-export class CreateUserController implements ICreateUserController {
+export class CreateUserController implements IController {
   // constructor (private readonly createUserRepository: ICreateUserRepository) {}
 
   createUserRepository: ICreateUserRepository;

@@ -7,15 +7,6 @@ export interface HttpResponse<T> {
   statusCode: number; // statusCode e do tipo number 500, 200
   body: T | string; //poderiamos declarar como any, mas usamos o generic aqui
 }
-
-// export interface HttpRequest {
-//   params?: any;
-//   body: any;
-//   headers?: any;
-// }
-
-// utilizando genreic para ficar melhor
-
 export interface HttpRequest<B> {
   params?: B;
   headers?: B;
