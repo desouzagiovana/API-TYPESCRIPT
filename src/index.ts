@@ -5,6 +5,8 @@ import { GetUsersController } from "./controllers/get-users/get-users.js";
 import { MongoClient } from "./database/mongo.js";
 import { MongoCreateUserRepository } from "./repositories/create-user/mongo-create-users.js";
 import { CreateUserController } from "./controllers/create-user/create-user.js";
+import { MongoUpdateUserRepository } from "./repositories/update-user/mongo-update-user.js";
+import { UpdateUserController } from "./controllers/update-user/update-user.js";
 
 // app.get("/", (req, res) => {
 //   res.send("Giovana hello world!");
@@ -73,6 +75,23 @@ const main = async () => {
 
     const { body, statusCode } = await createUserController.handle({
       body: req.body,
+    });
+
+    res.status(statusCode).send(body);
+  });
+
+  // o put e usado para deletar o existente e criar um novo
+
+  // o patch apenas atualiza parcialmente
+  app.patch("/users/:id", async (req, res) => {
+    const mongoUpdateUserRepository = new MongoUpdateUserRepository();
+    const updateUserConntroller = new UpdateUserController(
+      mongoUpdateUserRepository,
+    );
+
+    const { body, statusCode } = await updateUserConntroller.handle({
+      body: req.body,
+      params: req.params,
     });
 
     res.status(statusCode).send(body);
