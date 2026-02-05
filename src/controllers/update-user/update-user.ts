@@ -1,4 +1,5 @@
 import { User } from "../../models/user.js";
+import { badRequest, ok, serverError } from "../helpers.js";
 import { HttpRequest, HttpResponse, IController } from "../protocols.js";
 import { IUpdateUserRepository, UpdateUserParams } from "./protocols.js";
 
@@ -14,16 +15,18 @@ export class UpdateUserController implements IController {
       const body = httpRequest.body;
 
       if (!body) {
-        return {
-          statusCode: 400,
-          body: "Missing user id",
-        };
+        // return {
+        //   statusCode: 400,
+        //   body: "Missing user id",
+        // };
+        return badRequest("Missing body");
       }
       if (!id) {
-        return {
-          statusCode: 400,
-          body: "Missing user id",
-        };
+        // return {
+        //   statusCode: 400,
+        //   body: "Missing user id",
+        // };
+        return badRequest("Missing user id");
       }
       // se o usario passar algum campo que nao seja permitido de atualizaca deve barrar
       const allowedFieldsToUpdate = [
@@ -38,22 +41,21 @@ export class UpdateUserController implements IController {
       );
 
       if (someFieldIsNotAllowedToUpdate) {
-        return {
-          statusCode: 400,
-          body: "Some received field is not allowed",
-        };
+        // return {
+        //   statusCode: 400,
+        //   body: "Some received field is not allowed",
+        // };
+        return badRequest("Some received field is not allowed");
       }
       const user = await this.updateUserRepository.updateUser(id, body);
 
-      return {
-        statusCode: 200,
-        body: user,
-      };
+      // return {
+      //   statusCode: 200,
+      //   body: user,
+      // };
+      return ok(user);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: `Something went wrong. Error: ${error}`,
-      };
+      return serverError();
     }
   }
 }

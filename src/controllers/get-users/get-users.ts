@@ -1,6 +1,8 @@
-import { IGetUsersController, IGetUsersRepository } from "./protocol.js";
+import { ok, serverError } from "../helpers.js";
+import { IController } from "../protocols.js";
+import { IGetUsersRepository } from "./protocol.js";
 
-export class GetUsersController implements IGetUsersController {
+export class GetUsersController implements IController {
   // getUsersRepository: IGetUsersRepository; //vai ser do tipo da interface
   // constructor(getUsersRepository: IGetUsersRepository) {
   //   this.getUsersRepository = getUsersRepository; // a comunicacao ocm o banco de dados acontece por aq
@@ -10,12 +12,13 @@ export class GetUsersController implements IGetUsersController {
   async handle() {
     try {
       const users = await this.getUsersRepository.getUsers();
-      return {
-        statusCode: 200,
-        body: users,
-      };
+      // return {
+      //   statusCode: 200,
+      //   body: users,
+      // };
+      return ok(users);
     } catch (error) {
-      return { statusCode: 500, body: "Something went wrong." };
+      return serverError();
     }
   }
 }
