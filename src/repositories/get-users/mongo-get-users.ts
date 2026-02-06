@@ -10,6 +10,6 @@ export class MongoGetUsersRepository implements IGetUsersRepository {
       .collection<MongoUser>("users") // terei varios objetos User que nao terao campo id
       .find({})
       .toArray();
-    return users.map((user) => MongoClient.idFormatter(user));
+    return users.map((user: MongoUser) => MongoClient.idFormatter(user));
   }
 }

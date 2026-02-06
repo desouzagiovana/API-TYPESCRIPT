@@ -1,22 +1,24 @@
 {
   "compilerOptions": {
     /* Layout dos arquivos */
-    "rootDir": "./src", // pasta onde ficam seus arquivos .ts
-    "outDir": "./dist", // pasta onde serão gerados os .js
+    "rootDir": "./src",
+    "outDir": "./dist",
 
-    /* Ambiente Node.js */
-    "module": "ESNext", // gera código ESM
-    "target": "ES2020", // versão de JS gerada
-    "lib": ["esnext"], // bibliotecas padrão
-    "types": ["node"], // inclui tipos do Node.js
+    /* Ambiente Node.js com ESM */
+    "module": "NodeNext", // gera código ESM compatível com Node
+    "target": "ES2020",
+    "moduleResolution": "NodeNext", // ESSENCIAL para ESM no Node
+
+    "lib": ["esnext"],
+    "types": ["node"],
 
     /* Saídas adicionais */
-    "sourceMap": true, // gera mapas de código para debug
-    "declaration": true, // gera arquivos .d.ts
-    "declarationMap": true, // mapas para os .d.ts
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
 
     /* Regras de typechecking */
-    "strict": true, // ativa todas as verificações estritas
+    "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
@@ -26,13 +28,9 @@
     "noUnusedParameters": true,
 
     /* Outros */
-    "esModuleInterop": true, // permite importar libs CommonJS
-    "skipLibCheck": true // ignora checagem de libs externas
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"], // só compila arquivos dentro de src
-  "exclude": [
-    "node_modules",
-    "dist",
-    "eslint.config.mts" // exclui configs fora do src
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "eslint.config.mts"]
 }
