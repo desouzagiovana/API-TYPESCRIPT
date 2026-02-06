@@ -32,6 +32,7 @@ export const MongoClient = {
     this.db = db;
     console.log(`Conectado ao MongoDB na URL: ${url}`);
   },
+
   // O metodo basicamente vai receber um MongoUser ( que tem _id) e retorna um User (com id)
   idFormatter(user: MongoUser): User {
     const { _id, ...rest } = user;

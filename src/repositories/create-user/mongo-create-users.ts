@@ -22,7 +22,7 @@ export class MongoCreateUserRepository implements ICreateUserRepository {
     if (!user) {
       throw new Error("User not created");
     }
-    const { _id, ...rest } = user;
-    return { id: _id.toHexString(), ...rest };
+
+    return MongoClient.idFormatter(user);
   }
 }

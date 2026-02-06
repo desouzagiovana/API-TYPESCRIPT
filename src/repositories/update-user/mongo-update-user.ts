@@ -24,11 +24,6 @@ export class MongoUpdateUserRepository implements IUpdateUserRepository {
     if (!user) {
       throw new Error(`User not updated`);
     }
-
-    // fazer como no create a destruction necessaria para o mongo
-    //converter o id para _id...
-
-    const { _id, ...rest } = user;
-    return { id: _id.toHexString(), ...rest };
+    return MongoClient.idFormatter(user);
   }
 }

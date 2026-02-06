@@ -10,10 +10,6 @@ export class MongoGetUsersRepository implements IGetUsersRepository {
       .collection<MongoUser>("users") // terei varios objetos User que nao terao campo id
       .find({})
       .toArray();
-    return users.map(({ _id, ...rest }) => ({
-      //no mongo o id vem como _id, e para usarmos aqui precisamos retirar o _
-      ...rest,
-      id: _id.toHexString(),
-    }));
+    return users.map((user) => MongoClient.idFormatter(user));
   }
 }
