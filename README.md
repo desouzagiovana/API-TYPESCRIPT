@@ -7,9 +7,6 @@ Uma API REST desenvolvida em **Node.js + TypeScript**, criada com o objetivo de 
 **Docker** para containerização e padronização do ambiente
 **Ciclo completo de desenvolvimento → deploy** (do código local até produção no Railway)
 
-## 🚀 Deploy
-[![Deploy on Railway](https://railway.app/button.svg)](api-typescript-production.up.railway.app)
-
 ## Como rodar localmente
 
 ### 1. Clonar o repositório
