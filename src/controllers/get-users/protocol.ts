@@ -1,6 +1,4 @@
 import { User } from "../../models/user.js";
-import { HttpResponse } from "../protocols.js"; // importamos a interface do tipo de resposta dos controllers
-
 // descreve a forma que deve ter
 // e uma interface que representa o controller responsavel por obter usuarios
 //quem implementar essa interface deve ter o que ela definir

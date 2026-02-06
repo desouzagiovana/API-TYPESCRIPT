@@ -22,7 +22,7 @@ const main = async () => {
   app.listen(port, () => console.log(`Listening ON PORT ${port}`));
   await MongoClient.connect(); //chama o Singleton resposavel por conectar  com o banco
 
-  app.get("/users", async (req, res) => {
+  app.get("/users", async (_req, res) => {
     const mongoUsersRepository = new MongoGetUsersRepository();
     const getUserController = new GetUsersController(mongoUsersRepository);
 

@@ -1,44 +1,38 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
+    /* Layout dos arquivos */
+    "rootDir": "./src", // pasta onde ficam seus arquivos .ts
+    "outDir": "./dist", // pasta onde serão gerados os .js
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    /* Ambiente Node.js */
+    "module": "CommonJS", // formato de módulos para rodar com Node
+    "target": "ES2020", // versão de JS gerada
+    "lib": ["esnext"], // bibliotecas padrão
+    "types": ["node"], // inclui tipos do Node.js
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    /* Saídas adicionais */
+    "sourceMap": true, // gera mapas de código para debug
+    "declaration": true, // gera arquivos .d.ts
+    "declarationMap": true, // mapas para os .d.ts
 
-    // Stricter Typechecking Options
+    /* Regras de typechecking */
+    "strict": true, // ativa todas as verificações estritas
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    /* Estilo e boas práticas */
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    // "verbatimModuleSyntax": false,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
-  }
+    /* Outros */
+    "esModuleInterop": true, // permite importar libs CommonJS
+    "skipLibCheck": true // ignora checagem de libs externas
+  },
+  "include": ["src/**/*"], // só compila arquivos dentro de src
+  "exclude": [
+    "node_modules",
+    "dist",
+    "eslint.config.mts" // exclui configs fora do src
+  ]
 }

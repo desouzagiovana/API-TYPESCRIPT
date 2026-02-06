@@ -1,6 +1,4 @@
 import { User } from "../../models/user.js";
-import { HttpRequest, HttpResponse } from "../protocols.js";
-
 // export interface ICreateUserController {
 //   handle(
 //     httpRequest: HttpRequest<CreateUserParams>,
