@@ -6,6 +6,8 @@
 // servicos de caches e controles de sessoes
 //centralizacao de logs
 import { MongoClient as Mongo, Db } from "mongodb";
+import { MongoUser } from "../repositories/mongo-protocols.js";
+import { User } from "../models/user.js";
 
 export const MongoClient = {
   client: undefined as unknown as Mongo,
@@ -29,5 +31,10 @@ export const MongoClient = {
     this.client = client;
     this.db = db;
     console.log(`Conectado ao MongoDB na URL: ${url}`);
+  },
+  // O metodo basicamente vai receber um MongoUser ( que tem _id) e retorna um User (com id)
+  idFormatter(user: MongoUser): User {
+    const { _id, ...rest } = user;
+    return { id: _id.toHexString(), ...rest };
   },
 };
